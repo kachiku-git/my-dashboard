@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { TaskDate } from "../../date/TaskDate";
 
 const DashboardTask = () => {
   return (
@@ -18,38 +17,20 @@ const DashboardTask = () => {
             <div className="task-wrap">
               <ul className="task-lists">
                 <li className="task-item">
-                  <div className="button-wrap">
-                    <button className="option-button">追加</button>
-                    <button className="option-button">編集</button>
-                    <button className="option-button">削除</button>
-                  </div>
-                  {taskDate}
-                  <p className="task">
-                    タスクの追加・編集・削除ができるようにする
-                  </p>
+                    <div className="button-wrap">
+                      <button className="option-button">追加</button>
+                      <button className="option-button">編集</button>
+                      <button className="option-button">削除</button>
+                    </div>
+                  {TaskDate.map((task)=>(
+                    <p key={task.id} className="task">
+                      締切日時：{task.dueDate} <br />
+                      タスク名：{task.title} <br />
+                      進行状況：{task.status}
+                    </p>
+                  ))}
                 </li>
-                <li className="task-item">
-                  <div className="button-wrap">
-                    <button className="option-button">追加</button>
-                    <button className="option-button">編集</button>
-                    <button className="option-button">削除</button>
-                  </div>
-                  <p className="task">
-                    タスクの追加・編集・削除ができるようにする
-                  </p>
-                </li>
-                <li className="task-item">
-                  <div className="button-wrap">
-                    <button className="option-button">追加</button>
-                    <button className="option-button">編集</button>
-                    <button className="option-button">削除</button>
-                  </div>
-                  <p className="task">
-                    タスクの追加・編集・削除ができるようにする
-                    タスクの追加・編集・削除ができるようにする
-                    タスクの追加・編集・削除ができるようにする
-                  </p>
-                </li>
+                
               </ul>
             </div>
           </div>
