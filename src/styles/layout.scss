@@ -95,12 +95,12 @@ html {
       gap: 1rem;
       //タスク一覧の表示の調整をする
       .task-wrap {
+        border: 1px solid #343a40;
+        border-radius: 8px;
         .task-lists {
           list-style: none;
           .task-item {
             margin-bottom: 1.5rem;
-            border: 1px solid #343a40;
-            border-radius: 8px;
           }
           .task {
             border: 1px solid #343a40;

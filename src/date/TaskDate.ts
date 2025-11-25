@@ -1,22 +1,22 @@
 export type TaskStatus = '未着手' | '進行中' | '完了';
 
 export interface Task {
-    id?:number,
-    title?:string,
-    detail?:string,
+    id:number,
+    title:string,
+    detail:string,
     status:TaskStatus,
-    createdAt?:string,
-    dueDate?:number,
+    createdAt:string,
+    dueDate:number,
 }
 
-export const TaskDate = [
+export const TaskDate:Task[] = [
     {
         id:1,
         title:'タスク名がここに入力されています',
         detail:'タスクの内容がココに入力されます',
-        status:'タスクの進行状況がココに表示されます',
+        status:'完了',
         createdAt:'タスクの作成時間がココに表示されます',
-        dueDate:'タスクの締切日がココに表示されます',
+        dueDate:20250101,
     },
     {
         id:2,
@@ -24,7 +24,7 @@ export const TaskDate = [
         detail:'にんじん、じゃがいも、たまご、バナナ',
         status:'未着手',
         createdAt:'2025-11-25AM09:00:00',
-        dueDate:'2025-11-26',
+        dueDate:20251126,
     },
     {
         id:3,
@@ -32,7 +32,7 @@ export const TaskDate = [
         detail:'スクワットx20、腕立て伏せx10、レッグレイズx15',
         status:'進行中',
         createdAt:'2025-11-25AM12:15:30',
-        dueDate:'2025-11-26',
+        dueDate:20251126,
     },
     {
         id:4,
@@ -40,6 +40,6 @@ export const TaskDate = [
         detail:'机のライトを購入する、Zライトがいいなぁ',
         status:'完了',
         createdAt:'2025-11-24PM18:27:57',
-        dueDate:'2025-11-25',
+        dueDate:20251125,
     },
 ];
