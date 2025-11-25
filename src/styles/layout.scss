@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  width: 100vw;
+  padding: 0 2rem; //ここは最後に上下を調整する
+  // =============================================
+  // Header styles
+  // =============================================
+  .app-header {
+    max-width: 100%;
+    height: auto;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .app-header-inner {
+      background-color: #f8f9fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+
+      .app-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+      }
+      .app-subtitle {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+    }
+  }
+  // =============================================
+  // Main content styles
+  // =============================================
+  .app-main {
+    max-width: 1200px; //最終的にはwidth100%
+    margin: 0 auto;
+
+    .dashboard-top {
+      //width1200pxに変更する
+      padding: 2rem;
+      //   background-color: lightgrey;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+      gap: 1.5rem;
+      border: 1px solid #333;
+      margin-bottom: 2rem;
+    }
+  }
+  // =============================================
+  // Task styles
+  // =============================================
+  .dashboard-task {
+    border: 1px solid #333;
+    background: skyblue;
+    padding: 0.5rem;
+    .task-header {
+      display: inline-flex;
+      gap: 0.5rem;
+      border-radius: 999px;
+      background: #fff;
+      padding: 0.8rem 1rem;
+      margin-bottom: 2rem;
+      .task-button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 12px;
+        background: greenyellow;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          scale: 1.2;
+          background: lightgreen;
+        }
+      }
+      .task-button-active {
+        background: skyblue;
+      }
+    }
+
+    .task-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+    //タスク一覧の表示の調整をする
+    }
+  }
+  // =============================================
+  // common card styles
+  // =============================================
+  .widget-card {
+    background: #fff;
+    border: 1px solid #333;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    .widget-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+    .widget-body {
+      font-size: 1rem;
+    }
+  }
+}
