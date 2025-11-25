@@ -63,14 +63,15 @@ html {
   .dashboard-task {
     border: 1px solid #333;
     background: skyblue;
-    padding: 0.5rem;
+    padding: 0 0.5rem 0.5rem;
+    margin-bottom: 2rem;
     .task-header {
       display: inline-flex;
       gap: 0.5rem;
       border-radius: 999px;
       background: #fff;
       padding: 0.8rem 1rem;
-      margin-bottom: 2rem;
+      margin: 1rem;
       .task-button {
         padding: 0.5rem 1rem;
         border: none;
@@ -92,24 +93,55 @@ html {
       display: grid;
       grid-template-columns: 1fr 2fr;
       gap: 1rem;
-    //タスク一覧の表示の調整をする
+      //タスク一覧の表示の調整をする
+      .task-wrap {
+        .task-lists {
+          list-style: none;
+          .task-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid #343a40;
+            border-radius: 8px;
+            .button-wrap {
+              display: inline-flex;
+              gap: 0.5rem;
+              padding: 0.5rem;
+              .option-button {
+                padding: 0.5rem 1rem;
+                border: none;
+                border-radius: 12px;
+                background: orange;
+                cursor: pointer;
+                transition: all 0.2s ease-in-out;
+                &:hover {
+                  scale: 1.2;
+                  background: red;
+                  color: #f8f9fa;
+                }
+              }
+            }
+          }
+          .task {
+            padding: 0.5rem;
+          }
+        }
+      }
     }
   }
-  // =============================================
-  // common card styles
-  // =============================================
-  .widget-card {
-    background: #fff;
-    border: 1px solid #333;
-    border-radius: 0.5rem;
-    padding: 1rem;
-    .widget-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-    }
-    .widget-body {
-      font-size: 1rem;
-    }
+}
+// =============================================
+// common card styles
+// =============================================
+.widget-card {
+  background: #fff;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  .widget-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .widget-body {
+    font-size: 1rem;
   }
 }
