@@ -1,12 +1,12 @@
 export type TaskStatus = '未着手' | '進行中' | '完了';
 
 export interface Task {
-    id:number,
-    title:string,
-    detail:string,
+    id?:number,
+    title?:string,
+    detail?:string,
     status:TaskStatus,
-    createdAt:string,
-    dueDate:number,
+    createdAt?:string,
+    dueDate?:number,
 }
 
 export const TaskDate = [
