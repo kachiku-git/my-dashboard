@@ -1,5 +1,7 @@
 import React from "react";
 
+
+
 const DashboardTask = () => {
   return (
     <>
@@ -21,6 +23,7 @@ const DashboardTask = () => {
                     <button className="option-button">編集</button>
                     <button className="option-button">削除</button>
                   </div>
+                  {taskDate}
                   <p className="task">
                     タスクの追加・編集・削除ができるようにする
                   </p>

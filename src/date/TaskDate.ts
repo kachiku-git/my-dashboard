@@ -1,0 +1,35 @@
+export const TaskDate = [
+    {
+        id:1,
+        title:'タスク名がここに入力されています',
+        detail:'タスクの内容がココに入力されます',
+        status:'タスクの進行状況がココに表示されます',
+        createdAt:'タスクの作成時間がココに表示されます',
+        dueDate:'タスクの締切日がココに表示されます',
+    },
+    {
+        id:2,
+        title:'買い物',
+        detail:'にんじん、じゃがいも、たまご、バナナ',
+        status:'todo',
+        createdAt:'2025-11-25AM09:00:00',
+        dueDate:'2025-11-26',
+    },
+    {
+        id:3,
+        title:'筋トレ',
+        detail:'スクワットx20、腕立て伏せx10、レッグレイズx15',
+        status:'doing',
+        createdAt:'2025-11-25AM12:15:30',
+        dueDate:'2025-11-26',
+    },
+    {
+        id:4,
+        title:'ライトを購入する',
+        detail:'机のライトを購入する、Zライトがいいなぁ',
+        status:'done',
+        createdAt:'2025-11-24PM18:27:57',
+        dueDate:'2025-11-25',
+    },
+
+];
