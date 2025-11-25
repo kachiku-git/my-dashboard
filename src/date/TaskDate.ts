@@ -1,4 +1,4 @@
-export type TaskStatus = '未着手' | '進行中' | '完了';
+export type TaskStatus = '未選択'| '未着手' | '進行中' | '完了';
 
 export interface Task {
     id:number,
@@ -10,6 +10,14 @@ export interface Task {
 }
 
 export const TaskDate:Task[] = [
+    {
+        id:0,
+        title:'タスクが選択されてません',
+        detail:'選択されたタスクの内容を表示します',
+        status:'未選択',
+        createdAt:'',
+        dueDate:20250101,
+    },
     {
         id:1,
         title:'タスク名がここに入力されています',

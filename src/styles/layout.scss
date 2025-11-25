@@ -95,7 +95,7 @@ html {
       gap: 1rem;
       //タスク一覧の表示の調整をする
       .task-wrap {
-        border: 1px solid #343a40;
+        // border: 1px solid #343a40;
         border-radius: 8px;
         .task-lists {
           list-style: none;
@@ -159,5 +159,27 @@ html {
       background: red;
       color: #f8f9fa;
     }
+  }
+}
+// =============================================
+// common make-task styles
+// =============================================
+.make-task{
+  padding: .5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #343a40;
+  border-radius: 8px;
+  .title-input,
+  .detail-input{
+    width: 100%;
+    padding: .2rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  .button-wrap{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }

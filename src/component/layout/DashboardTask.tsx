@@ -1,12 +1,25 @@
 import { useState } from "react";
-import { TaskDate } from "../../date/TaskDate";
+import { TaskDate, } from "../../date/TaskDate";
+
 
 const DashboardTask = () => {
-  const [tasks,setTasks] = useState(TaskDate);
-  const [selectedTask,setSelectedTask]=useState(TaskDate[0]);
+  // 共通ステート
+  const [tasks,setTasks] = useState(TaskDate.slice(1));
+  // 左側ステート
+  const [onMakeTask,setOnMakeTask] = useState(false);
   const [newTitle,setNewTile] = useState('');
   const [newDetail,setNewDetail] = useState('');
-  const [onMakeTask,setOnMakeTask] = useState(false);
+  const [selectedTask,setSelectedTask]=useState(TaskDate[0]);
+  // 右側ステート
+  const handleDeleteTask = () => {
+    if(tasks.length === 0){
+      alert('削除できるタスクがありません、タスクを追加してください！')
+      return
+    };
+    const newTaskList = tasks.filter((task)=>task.id !== selectedTask.id)
+    setTasks(newTaskList);
+    setSelectedTask(TaskDate[0]);
+  }
 
   return (
     <>
@@ -31,7 +44,7 @@ const DashboardTask = () => {
                   新規タスク作成
                 </button>
               </div>
-              {!onMakeTask && (
+              {onMakeTask && (
               <div className="make-task">
                 <input type="text" className="title-input" placeholder="タイトル入力" value={newTitle} onChange={(e)=>setNewTile(e.target.value)} />
                 <textarea  className="detail-input" placeholder="内容入力" value={newDetail} onChange={(e)=>setNewDetail(e.target.value)} />
@@ -42,7 +55,6 @@ const DashboardTask = () => {
                   // クリック時にタイトルがない場合は何も処理しない
                   if(!newTitle.trim()) return;
                   // newタスク作成の内容
-
                   const createdTime = new Date();
                   const createdAt = createdTime.toLocaleDateString('ja-JP',{
                     year: 'numeric',
@@ -67,6 +79,7 @@ const DashboardTask = () => {
 
                   }}>追加する？
                 </button>
+                <button className="option-button" onClick={()=>setOnMakeTask(!onMakeTask)}>キャンセル</button>
                 </div>
               </div>
 
@@ -95,7 +108,7 @@ const DashboardTask = () => {
               </h2>
               <div className="button-wrap">
                   <button className="option-button">編集</button>
-                  <button className="option-button">削除</button>
+                  <button className="option-button" onClick={handleDeleteTask}>削除</button>
               </div>
             </div>
             <p className="widget-body">
