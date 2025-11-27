@@ -20,10 +20,10 @@ export const TaskDate:Task[] = [
     },
     {
         id:1,
-        title:'タスク名がここに入力されています',
-        detail:'タスクの内容がココに入力されます',
-        status:'完了',
-        createdAt:'タスクの作成時間がココに表示されます',
+        title:'森の集会',
+        detail:'森の会合に行かないといけない、村長にどうバナナの木の件を説明するのか考える',
+        status:'未着手',
+        createdAt:'2025-11-25AM09:00:00',
         dueDate:20250101,
     },
     {

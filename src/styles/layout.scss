@@ -170,7 +170,9 @@ html {
   border: 1px solid #343a40;
   border-radius: 8px;
   .title-input,
-  .detail-input{
+  .detail-input,
+  .dueDate-input,
+  .status{
     width: 100%;
     padding: .2rem;
     margin-bottom: 1rem;
@@ -181,5 +183,41 @@ html {
     display: flex;
     justify-content: space-around;
     align-items: center;
+  }
+}
+// =============================================
+// common edit-task styles
+// =============================================
+.edit-task{
+  
+  .widget-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title-edit,
+    .status-edit {
+      width: 100%;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  }
+  .button-wrap{
+    min-width: 210px;
+    
+    color: red;
+  }
+}
+
+.widget-body{
+  input{
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  textarea{
+    width: 100%;
+    min-height: 5rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
 }
