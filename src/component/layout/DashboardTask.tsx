@@ -1,9 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TaskDate, type Task } from "../../date/TaskDate";
+
+//締切の日付numberをストリング型へ変換ヘルパー
+const formatDueDateNumberToInput = (dueDate: number): string => {
+  if (!dueDate) return "";
+  const s = dueDate.toString().padStart(8, "0");
+  const y = s.slice(0, 4);
+  const m = s.slice(4, 6);
+  const d = s.slice(6, 8);
+  return `${y}/${m}/${d}`;
+};
+//ローカル保存時にNumber型へ戻す
+const parsedInputDateToNumber = (value: string): number => {
+  if (!value) return 0;
+  const cleaned = value.replace(/-/g, "");
+  const num = Number(cleaned);
+  return Number.isNaN(num) ? 0 : num;
+};
 
 const DashboardTask = () => {
   // 共通ステート
-  const [tasks, setTasks] = useState(TaskDate.slice(1));
+  const [tasks, setTasks] = useState<Task[]>(() => {
+   if(typeof window === 'undefined'){
+    return TaskDate;
+   }
+   try {
+    const saved = localStorage.getItem("dashboardTasks");
+    if (saved) {
+      const parsed: Task[] = JSON.parse(saved);
+      console.log('parsed tasks',parsed);
+      if (parsed.length > 0) {
+        return parsed
+      }
+    }
+  } catch (error) {
+    console.error("ローカルストレージからタスクを読み込めません", error);
+  }
+  return TaskDate
+  });
+
   const [filterStatus, setFilterStatus] = useState<"all" | "進行中" | "完了">(
     "all"
   );
@@ -11,27 +46,28 @@ const DashboardTask = () => {
   const [onMakeTask, setOnMakeTask] = useState(false);
   const [newTitle, setNewTile] = useState("");
   const [newDetail, setNewDetail] = useState("");
+  const [newDueDate, setNewDueDate] = useState("");
   const [selectedTask, setSelectedTask] = useState(TaskDate[0]);
   // 右側ステート
   const [onEdit, setOnEdit] = useState(false);
   const [editTitle, setEditTitle] = useState("");
   const [editDetail, setEditDetail] = useState("");
   const [editStatus, setEditStatus] = useState<Task["status"]>("未着手");
-  const [editDueDate, setEditDueDate] = useState<number>(selectedTask.dueDate);
+  const [editDueDate, setEditDueDate] = useState<string>("");
 
   //左側関数
   // タスクステータスによってフィルターをかける
   const filteredTasks =
     filterStatus === "all"
-      ? tasks
-      : tasks.filter((task) => task.status === filterStatus);
+      ? tasks.filter((task)=> task.id !== 0)
+      : tasks.filter((task) => task.status === filterStatus && task.id !==0);
 
   // 右側関数
   // 新規タスク作成
   const handleNewTask = () => {
     // クリック時にタイトルがない場合は何も処理しない
     if (!newTitle.trim()) return;
-    // newタスク作成の内容
+    // newタスク作成時の日付の設定
     const createdTime = new Date();
     const createdAt = createdTime.toLocaleDateString("ja-JP", {
       year: "numeric",
@@ -40,13 +76,16 @@ const DashboardTask = () => {
       hour: "2-digit",
       minute: "2-digit",
     });
+
+    // stringの日付をnumberに変換
+    const dueDateNumber = parsedInputDateToNumber(newDueDate);
     const newTask = {
       id: tasks.length + 1,
       title: newTitle,
       detail: newDetail,
       status: "未着手",
       createdAt,
-      dueDate: 20250101,
+      dueDate: dueDateNumber,
     };
 
     setTasks([...tasks, newTask]);
@@ -75,7 +114,7 @@ const DashboardTask = () => {
     setEditTitle(selectedTask.title);
     setEditDetail(selectedTask.detail);
     setEditStatus(selectedTask.status);
-    setEditDueDate(selectedTask.dueDate);
+    setEditDueDate(formatDueDateNumberToInput(selectedTask.dueDate));
     setOnEdit(!onEdit);
   };
 
@@ -93,7 +132,7 @@ const DashboardTask = () => {
             title: editTitle,
             detail: editDetail,
             status: editStatus,
-            dueDate: editDueDate,
+            dueDate: parsedInputDateToNumber(editDueDate),
           }
         : task
     );
@@ -110,6 +149,20 @@ const DashboardTask = () => {
     }
     setOnEdit(!onEdit);
   };
+
+  // 初回ローカルストレージから読み込み
+  useEffect(() => {
+    
+  }, []);
+
+  // タスク変更時に保存する
+  useEffect(() => {
+    try {
+      localStorage.setItem("dashboardTasks", JSON.stringify(tasks));
+    } catch (error) {
+      console.error("ローカルストレージにタスクを保存できません", error);
+    }
+  }, [tasks]);
 
   return (
     <section className="dashboard-task">
@@ -171,6 +224,12 @@ const DashboardTask = () => {
                   value={newDetail}
                   onChange={(e) => setNewDetail(e.target.value)}
                 />
+                <input
+                  type="date"
+                  className="due-input"
+                  value={newDueDate}
+                  onChange={(e) => setNewDueDate(e.target.value)}
+                />
                 <div className="button-wrap">
                   <button className="option-button" onClick={handleNewTask}>
                     追加する？
@@ -190,7 +249,7 @@ const DashboardTask = () => {
               {filteredTasks.map((task) => (
                 <li key={task.id} className="task-item">
                   <p className="task" onClick={() => setSelectedTask(task)}>
-                    締切日時：{task.dueDate} <br />
+                    締切日時：{formatDueDateNumberToInput(task.dueDate)} <br />
                     タスク名：{task.title} <br />
                     進行状況：{task.status}
                   </p>
@@ -206,15 +265,17 @@ const DashboardTask = () => {
             <div className="edit-task">
               <div className="widget-header">
                 <div>
-                  <label htmlFor="">タイトル:</label>
+                  <label htmlFor="edit-title">タイトル:</label>
                   <input
+                    id="edit-title"
                     type="text"
                     className="title-edit"
                     value={editTitle}
                     onChange={(e) => setEditTitle(e.target.value)}
                   />
-                  <label htmlFor="">進行状況:</label>
+                  <label htmlFor="edit-status">進行状況:</label>
                   <select
+                    id="edit-status"
                     className="status-edit"
                     value={editStatus}
                     onChange={(e) => setEditStatus(e.target.value)}
@@ -259,15 +320,17 @@ const DashboardTask = () => {
           {onEdit ? (
             <p className="widget-body">
               作成日:{selectedTask.createdAt} <br />
-              <label htmlFor="">締切日:</label>
+              <label htmlFor="edit-dueDate">締切日:</label>
               <input
-                type="number"
+                id="edit-dueDate"
+                type="date"
                 value={editDueDate}
-                onChange={(e) => setEditDueDate(Number(e.target.value))}
+                onChange={(e) => setEditDueDate(e.target.value)}
               />{" "}
               <br />
-              <label htmlFor="">タスク内容:</label>
+              <label htmlFor="edit-detail">タスク内容:</label>
               <textarea
+                id="edit-detail"
                 value={editDetail}
                 onChange={(e) => setEditDetail(e.target.value)}
               />
@@ -276,7 +339,7 @@ const DashboardTask = () => {
             //通常表示
             <p className="widget-body">
               作成日:{selectedTask.createdAt} <br />
-              締切日:{selectedTask.dueDate} <br />
+              締切日:{formatDueDateNumberToInput(selectedTask.dueDate)} <br />
               タスク内容:
               <br />
               {selectedTask.detail}
