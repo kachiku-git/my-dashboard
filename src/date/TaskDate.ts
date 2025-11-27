@@ -11,7 +11,7 @@ export interface Task {
 
 export const TaskDate:Task[] = [
     {
-        id:0,
+        id:1,
         title:'タスクが選択されてません',
         detail:'選択されたタスクの内容を表示します',
         status:'未選択',
@@ -19,7 +19,7 @@ export const TaskDate:Task[] = [
         dueDate:20250101,
     },
     {
-        id:1,
+        id:2,
         title:'森の集会',
         detail:'森の会合に行かないといけない、村長にどうバナナの木の件を説明するのか考える',
         status:'未着手',
@@ -27,27 +27,19 @@ export const TaskDate:Task[] = [
         dueDate:20250101,
     },
     {
-        id:2,
+        id:3,
         title:'買い物',
         detail:'にんじん、じゃがいも、たまご、バナナ',
-        status:'未着手',
+        status:'進行中',
         createdAt:'2025-11-25AM09:00:00',
         dueDate:20251126,
     },
     {
-        id:3,
+        id:4,
         title:'筋トレ',
         detail:'スクワットx20、腕立て伏せx10、レッグレイズx15',
-        status:'進行中',
+        status:'完了',
         createdAt:'2025-11-25AM12:15:30',
         dueDate:20251126,
-    },
-    {
-        id:4,
-        title:'ライトを購入する',
-        detail:'机のライトを購入する、Zライトがいいなぁ',
-        status:'完了',
-        createdAt:'2025-11-24PM18:27:57',
-        dueDate:20251125,
     },
 ];
