@@ -1,9 +1,6 @@
-import React from "react";
 import ClockWidget from "../widgets/ClockWidget";
 import WeatherWidget from "../widgets/WeatherWidget";
 import TodayGoalWidget from "../widgets/TodayGoalWidget";
-
-
 
 const DashboardTop = () => {
   return (
