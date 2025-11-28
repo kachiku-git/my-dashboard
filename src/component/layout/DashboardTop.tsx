@@ -1,14 +1,12 @@
 import React from "react";
+import ClockWidget from "../widgets/ClockWidget";
 
 const DashboardTop = () => {
   return (
     <>
       <section className="dashboard-top">
-        <div className="widget-card">
-          <h2 className="widget-title">時計</h2>
-          <p>今現在の時刻を表示させるエリアにする</p>
-          <p>日本時間を表示させる</p>
-        </div>
+        <ClockWidget />
+
         <div className="widget-card">
           <h2 className="widget-title">天気予報</h2>
           <p>現在の天気予報を表示するエリア</p>
