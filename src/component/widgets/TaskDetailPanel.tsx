@@ -1,12 +1,13 @@
 import type { FC } from "react";
 import { useState } from "react";
 import type { Task } from "../../date/TaskDate";
-import { formatDueDateNumberToDisplay, parsedInputDateToNumber } from "./DashboardTask";
+import { formatDueDateNumberToDisplay, parsedInputDateToNumber } from "../layout/DashboardTask";
 
 type TaskDetailPanelProps = {
   task: Task;
   onUpdateTask: (updated: Task) => void;
   onDeleteTask: (id: number) => void;
+  onFocusPanel: ()=> void;
 };
 
 export const TaskDetailPanel: FC<TaskDetailPanelProps> = ({

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import type { FC } from "react";
 import type { Task } from "../../date/TaskDate";
-import type { FilterStatus } from "./DashboardTask";
-import { formatDueDateNumberToDisplay } from "./DashboardTask";
+import type { FilterStatus } from "../layout/DashboardTask";
+import { formatDueDateNumberToDisplay } from "../layout/DashboardTask";
 
 type TaskListPanelProps = {
   tasks: Task[];
@@ -51,6 +51,11 @@ export const TaskListPanel: FC<TaskListPanelProps> = ({
       detail: newDetail,
       dueDate: newDueDate,
     });
+
+    // 新規タスクは「未着手」なので、フィルタを all に戻して必ず見えるようにする
+    onFilterChange("all");
+
+    // 入力フォームをリセットして閉じる
     setNewTitle("");
     setNewDetail("");
     setNewDueDate("");

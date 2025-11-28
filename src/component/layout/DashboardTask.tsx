@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import type { FC } from "react";
 import { TaskDate, type Task } from "../../date/TaskDate";
-import { TaskListPanel } from "./TaskListPanel";
-import { TaskDetailPanel } from "./TaskDetailPanel";
+import { TaskListPanel } from "../widgets/TaskListPanel";
+import { TaskDetailPanel } from "../widgets/TaskDetailPanel";
 
 type FilterStatus = "all" | "進行中" | "完了";
 

@@ -1,223 +1,52 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-.app {
-  width: 100vw;
-  padding: 0 2rem; //ここは最後に上下を調整する
-  // =============================================
-  // Header styles
-  // =============================================
-  .app-header {
-    max-width: 100%;
-    height: auto;
-    padding: 2rem 0;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    .app-header-inner {
-      background-color: #f8f9fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-
-      .app-title {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #343a40;
-      }
-      .app-subtitle {
-        font-size: 1rem;
-        color: #6c757d;
-      }
-    }
-  }
-  // =============================================
-  // Main content styles
-  // =============================================
-  .app-main {
-    max-width: 1200px; //最終的にはwidth100%
+// =============================================
+// Header styles
+// =============================================
+.app-header {
+  max-width: 100%;
+  height: auto;
+  padding: 2rem 0;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  .app-header-inner {
+    max-width: 1200px;
+    background-color: var(--bg-header);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    text-align: center;
+    padding: 1rem;
     margin: 0 auto;
 
-    .dashboard-top {
-      //width1200pxに変更する
-      padding: 2rem;
-      //   background-color: lightgrey;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-      gap: 1.5rem;
-      border: 1px solid #333;
-      margin-bottom: 2rem;
-    }
-  }
-  // =============================================
-  // Task styles
-  // =============================================
-  .dashboard-task {
-    border: 1px solid #333;
-    background: skyblue;
-    padding: 0.5rem 0.5rem;
-    margin-bottom: 2rem;
-    border-radius: 12px;
-    .task-header {
-      display: inline-flex;
-      gap: 0.5rem;
-      border-radius: 999px;
-      background: transparent;
-      margin-bottom: 1rem;
-      .task-button {
-        padding: .5rem 1rem;
-        border: none;
-        border-radius: 12px;
-        background: greenyellow;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          scale: 1.2;
-          background: lightgreen;
-        }
-      }
-      .task-button-active {
-        background: skyblue;
-      }
-    }
-
-    .task-content {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 1rem;
-      //タスク一覧の表示の調整をする
-      .task-wrap {
-        // border: 1px solid #343a40;
-        border-radius: 8px;
-        .task-lists {
-          list-style: none;
-          .task-item {
-            margin-bottom: 1.5rem;
-          }
-          .task {
-            border: 1px solid #343a40;
-            border-radius: 8px;
-            padding: 0.5rem;
-            margin: .5rem;
-            background-color: lightgray;
-            transition: .3s;
-            &:hover{
-              scale: 1.1;
-            }
-          }
-        }
-      }
-    }
-  }
-}
-// =============================================
-// common card styles
-// =============================================
-.widget-card {
-  background: #fff;
-  border: 1px solid #333;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  .widget-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .widget-title {
-      font-size: 1.2rem;
+    .app-title {
+      font-size: 1.5rem;
       font-weight: bold;
-      margin-bottom: 1rem;
+      color: var(--text-main);
     }
-  }
-  .widget-body {
-    font-size: 1rem;
-  }
-}
-// =============================================
-// common option button styles
-// =============================================
-.button-wrap {
-  display: inline-flex;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  .option-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 12px;
-    background: orange;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-      scale: 1.2;
-      background: red;
-      color: #f8f9fa;
-    }
-  }
-}
-// =============================================
-// common make-task styles
-// =============================================
-.make-task{
-  padding: .5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #343a40;
-  border-radius: 8px;
-  .title-input,
-  .detail-input,
-  .dueDate-input,
-  .status{
-    width: 100%;
-    padding: .2rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-  .button-wrap{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-  }
-}
-// =============================================
-// common edit-task styles
-// =============================================
-.edit-task{
-  
-  .widget-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .title-edit,
-    .status-edit {
-      width: 100%;
+    .app-subtitle {
       font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
+      color: #6c757d;
     }
   }
-  .button-wrap{
-    min-width: 210px;
-    
-    color: red;
-  }
 }
+// =============================================
+// Main content styles
+// =============================================
+.app-main {
+  max-width: 1200px; //最終的にはwidth100%
+  margin: 0 auto;
 
-.widget-body{
-  input{
-    font-size: 1rem;
-    font-weight: bold;
-  }
-  textarea{
-    width: 100%;
-    min-height: 5rem;
-    font-size: 1rem;
-    font-weight: bold;
+  .dashboard-top {
+    padding: 2rem 0;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    .dashboard-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
   }
 }

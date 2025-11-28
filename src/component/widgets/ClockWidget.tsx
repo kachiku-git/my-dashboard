@@ -37,9 +37,9 @@ export default function ClockWidget() {
     <div className="widget-card">
       <h2 className="widget-title">時計</h2>
       <div className="widget-body clock-widget">
-        <p className="clock--label">日本標準(JST)</p>
-        <p className="clock--time">{timeString}</p>
-        <p className="clock--date">
+        <p className="clock-label">日本標準(JST)</p>
+        <p className="clock-time">{timeString}</p>
+        <p className="clock-date">
           {dateString}({weekDay})
         </p>
       </div>

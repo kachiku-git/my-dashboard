@@ -1,24 +1,19 @@
 import React from "react";
 import ClockWidget from "../widgets/ClockWidget";
 import WeatherWidget from "../widgets/WeatherWidget";
+import TodayGoalWidget from "../widgets/TodayGoalWidget";
+
+
 
 const DashboardTop = () => {
   return (
     <>
       <section className="dashboard-top">
-        <ClockWidget />
-        <WeatherWidget />
-
-        <div className="widget-card">
-          <h2 className="widget-title">カレンダー</h2>
-          <p>今月カレンダーと締切日付をハイライト表示するエリアにする</p>
-          <p>ToDoリストと連携させるのが目標</p>
+        <div className="dashboard-display">
+         <ClockWidget />
+          <WeatherWidget />
         </div>
-        <div className="widget-card">
-          <h2 className="widget-title">今日の目標</h2>
-          <p>本日の大切なタスクやメモを表示するエリアにする</p>
-          <p>ToDoリストと連携させなくても良き</p>
-        </div>
+        <TodayGoalWidget/>
       </section>
     </>
   );
