@@ -1,17 +1,14 @@
 import React from "react";
 import ClockWidget from "../widgets/ClockWidget";
+import WeatherWidget from "../widgets/WeatherWidget";
 
 const DashboardTop = () => {
   return (
     <>
       <section className="dashboard-top">
         <ClockWidget />
+        <WeatherWidget />
 
-        <div className="widget-card">
-          <h2 className="widget-title">天気予報</h2>
-          <p>現在の天気予報を表示するエリア</p>
-          <p>とりあえず場所は選択できるようにする</p>
-        </div>
         <div className="widget-card">
           <h2 className="widget-title">カレンダー</h2>
           <p>今月カレンダーと締切日付をハイライト表示するエリアにする</p>
